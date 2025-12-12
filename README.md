@@ -24,16 +24,24 @@ The system processes the input through five distinct files, demonstrating the co
 
 
 
-## 📚 Domain-Specific Language (DSL) Grammar
+## 📚 **Domain-Specific Language (DSL) Grammar Specification**
 
 The DSL is a boolean expression language designed for clarity and parsability. It is built from indicators, series, literals, and comparison operators.
 
-| Component | Syntax Example | Description |
-| :--- | :--- | :--- |
-| **Statements** | `ENTRY: EXPRESSION`, `EXIT: EXPRESSION` | Defines the condition for a trade action. |
-| **Indicators** | `SMA(close, 20)`, `RSI(close, 14)` | Standard technical analysis functions. |
-| **Logic** | `AND`, `OR` | Boolean combination of conditions. |
-| **Comparison**| `close > 100` | Compares two values. |
+**1. Syntax Components**
+* **Actions:** `ENTRY:` and `EXIT:`
+* **Indicators:** `SMA(series, period)`, `RSI(series, period)`
+* **Series:** `close`, `high`, `low`, `volume`
+* **Operators:** `>`, `<`, `==`, `AND`, `OR`
+
+**2. Grammar Examples**
+| Goal | DSL Representation |
+| :--- | :--- |
+| **Simple Trend** | `ENTRY: close > SMA(close, 50)` 
+| **Volume Spike** | `ENTRY: volume > 1000000` |
+| **Overbought Exit**| `EXIT: RSI(close, 14) > 80` |
+| **Combined Rule** | `ENTRY: close > SMA(close, 20) AND volume > 500000` |
+
 
 
 ## 🚀 Setup and Execution
@@ -60,4 +68,7 @@ Total Return: 8.3%
 Max Drawdown: 8.0%  <-- Crucial confirmation of the robust MDD implementation
 
 Trades: 1
+
+
+
 
